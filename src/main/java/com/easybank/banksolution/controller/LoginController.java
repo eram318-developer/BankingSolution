@@ -34,6 +34,11 @@ public class LoginController {
         } catch (Exception e) {
             response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An exception has occurred" + e.getMessage());
         }
-        return  response;
+        return response;
+    }
+
+    @PostMapping("/helloWorld")
+    public String getHelloWorld() {
+        return "Hello World";
     }
 }
