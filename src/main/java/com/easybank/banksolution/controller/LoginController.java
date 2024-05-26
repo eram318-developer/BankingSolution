@@ -39,6 +39,6 @@ public class LoginController {
 
     @PostMapping("/helloWorld")
     public String getHelloWorld() {
-        return "Hello World";
+        return "Hello World to everyone";
     }
 }
