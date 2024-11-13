@@ -13,7 +13,7 @@ public class Contact {
 
     @Id
     @Column(name = "contact_id")
-    private long contactId;
+    private String contactId;
 
     @Column(name = "contact_name")
     private String contactName;

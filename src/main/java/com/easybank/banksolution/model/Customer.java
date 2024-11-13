@@ -1,5 +1,6 @@
 package com.easybank.banksolution.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,10 +19,14 @@ public class Customer {
     @Id
     @GeneratedValue
     Long id;
+
     @Column(nullable = false)
     private String email;
+
     @Column(nullable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String pwd;
+
     @Column(nullable = false)
     private String role;
 }
