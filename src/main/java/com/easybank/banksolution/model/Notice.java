@@ -1,5 +1,6 @@
 package com.easybank.banksolution.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,10 +31,12 @@ public class Notice {
     @Column(name = "notice_end_date")
     private Date noticeEdDate;
 
+    @JsonIgnore
     @CreationTimestamp
     @Column(name = "notice_create_date")
     private Date createDate;
 
+    @JsonIgnore
     @Column(name = "notice_update_date")
     private Date updateDate;
 }
