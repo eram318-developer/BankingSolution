@@ -15,6 +15,7 @@ public class Notice {
 
     @Id
     @Column(name = "notice_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "notice_summary")

@@ -13,6 +13,7 @@ public class Cards {
 
     @Id
     @Column(name = "card_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long cardId;
 
     @Column(name = "customer_id")

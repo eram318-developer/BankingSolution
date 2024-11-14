@@ -15,6 +15,7 @@ public class Accounts {
 
     @Id
     @Column(name="account_number")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long accountNumber;
 
     @Column(name="account_type")

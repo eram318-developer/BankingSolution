@@ -27,6 +27,9 @@ public class BankSolutionProvider implements AuthenticationProvider {
     CustomerRepository customerRepository;
 
     @Autowired
+    UserDetailsService userDetailsService;
+
+    @Autowired
     PasswordEncoder passwordEncoder;
 
     @Override
@@ -34,20 +37,9 @@ public class BankSolutionProvider implements AuthenticationProvider {
         String username = authentication.getName();
         String pwd = authentication.getCredentials().toString();
 
-        List<Customer> customerList = customerRepository.findByEmail(username);
-        if(customerList.size()>0){
-            if(passwordEncoder.matches(pwd,customerList.get(0).getPwd())){
-                List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
-                grantedAuthorityList.add(new SimpleGrantedAuthority(customerList.get(0).getRole()));
-                return new UsernamePasswordAuthenticationToken(username,pwd,grantedAuthorityList);
-            }
-            else {
-                throw new BadCredentialsException("Invalid Password");
-            }
-        }
-        else {
-            throw new BadCredentialsException("No Registration With This Credentials");
-        }
+        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+        return new UsernamePasswordAuthenticationToken(username, pwd, userDetails.getAuthorities());
+
     }
 
     @Override

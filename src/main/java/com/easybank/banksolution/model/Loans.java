@@ -15,6 +15,7 @@ public class Loans {
 
     @Id
     @Column(name = "loan_number")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long loanNumber;
 
     @Column(name = "customer_id")
