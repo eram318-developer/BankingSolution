@@ -40,7 +40,7 @@ public class LoginController {
         return response;
     }
 
-    @RequestMapping("/user")
+    @GetMapping("/user")
     public Customer getUserDetailsAfterLogin(Authentication authentication) {
         Optional<Customer> optionalCustomer = customerRepository.findByEmail(authentication.getName());
         return optionalCustomer.orElse(null);

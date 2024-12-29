@@ -3,10 +3,7 @@ package com.easybank.banksolution.controller;
 import com.easybank.banksolution.model.Contact;
 import com.easybank.banksolution.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Random;
 
@@ -16,7 +13,7 @@ public class ContactController{
     @Autowired
     ContactRepository contactRepository;
 
-    @GetMapping("/contact")
+    @PostMapping("/contact")
     public Contact getContact(@RequestBody Contact contact) {
         contact.setContactId(getServiceReqNumber());
         return contactRepository.save(contact);
